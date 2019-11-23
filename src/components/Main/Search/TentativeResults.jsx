@@ -16,50 +16,51 @@ const TentativeResults = ({ step, navigate }) => {
     country,
     gender,
     age,
-    totalResults: results,
+    totalResults,
   } = state;
 
-  useEffect(() => {
-    const fetch = async () => {
-      dispatch({ type: "DATA_FETCH_START" });
-      const { status, studies, totalResults } = await fetchData(
-        condition,
-        postalCode,
-        country,
-        1,
-        gender,
-        age,
-      );
-      if (status === 200) {
-        dispatch({
-          type: "DATA_FETCH_SUCCESS",
-          payload: { studies, totalResults },
-        });
-      } else {
-        dispatch({
-          type: "DATA_FETCH_FAILURE",
-          payload: { studies, totalResults },
-        });
-      }
-    };
-    fetch();
-  }, [condition, postalCode, country, gender, age, dispatch]);
+  const fetch = async (page) => {
+    dispatch({ type: "DATA_FETCH_START" });
+    const { status, studies, totalResults } = await fetchData(
+      condition,
+      postalCode,
+      country,
+      1,
+      gender,
+      age,
+    );
+    if (status === 200) {
+      dispatch({
+        type: "DATA_FETCH_SUCCESS",
+        payload: { studies, totalResults },
+      });
+      navigate(`${page}`);
+    } else {
+      dispatch({
+        type: "DATA_FETCH_FAILURE",
+        payload: { studies, totalResults },
+      });
+    }
+  };
 
   const handleClick = () => {
     const nextPage = Number(step) + 1;
-    navigate(`${nextPage}`);
+    //navigate(`${nextPage}`);
+    fetch(nextPage);
   };
 
   const handleKey = e => {
     if (e.key === "Enter") {
       const nextPage = Number(step) + 1;
-      navigate(`${nextPage}`);
-    }
+      fetch(nextPage);
+      //navigate(`${nextPage}`);
+    } 
   };
+
   return (
     <Right>
       <ResultsHeader>
-        {results}
+        {totalResults}
         &nbsp;trials found
       </ResultsHeader>
       {step === "1" && condition && postalCode && country ? (
@@ -76,7 +77,14 @@ const TentativeResults = ({ step, navigate }) => {
           tabIndex="0"
         />
       ) : null}
-      {step === "3" && condition && postalCode && country && gender && age && (
+      {step === "3" && gender ? (
+        <NavArrow
+          onClick={() => handleClick()}
+          onKeyPress={e => handleKey(e)}
+          tabIndex="0"
+        />
+      ) : null}
+      {step === "4" && condition && postalCode && country && gender && age && (
         <button type="button" onClick={() => navigate("../results/1")}>
           See Results
         </button>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -10,9 +10,11 @@ import Countries from "./Countries";
 
 const Form = ({ navigate }) => {
   const { state, dispatch } = useContext(Context);
-  const { condition, postalCode, country } = state;
+  const { condition, postalCode, country, isFetchingData } = state;
+  const [error, setError] = useState('');
 
   const handleChange = e => {
+    setError('');
     dispatch({
       type: "UPDATE_INPUT",
       payload: { name: e.target.id, value: e.target.value },
@@ -34,13 +36,16 @@ const Form = ({ navigate }) => {
           type: "DATA_FETCH_SUCCESS",
           payload: { studies, totalResults },
         });
+        navigate("/search/2");
       } else {
         dispatch({
           type: "DATA_FETCH_FAILURE",
           payload: { studies, totalResults },
         });
       }
-      navigate("/search/2");
+      
+    } else {
+      setError('All fields are required for search');
     }
   };
 
@@ -71,6 +76,8 @@ const Form = ({ navigate }) => {
         />
       </label>
       <Countries handleChange={handleChange} />
+      {error && <div>{error}</div>}
+      {isFetchingData && <div>{isFetchingData}</div>}
       <button type="submit">Find a Trial</button>
     </FormStyle>
   );

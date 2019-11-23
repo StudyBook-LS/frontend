@@ -15,6 +15,7 @@ const Age = () => {
       payload: { name: e.target.id, value },
     });
   };
+
   return (
     <AgeStyle htmlFor="age">
       How old are you?

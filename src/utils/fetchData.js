@@ -21,24 +21,25 @@ const fetchData = async (condition, postalCode, country, page, gender, age) => {
       `https://clinicaltrialadvisor.com/fetch_search`,
       {
         user_search: `${citySearch || countrySearch} ${condition}`,
-        page,
-        gender: gender || "all",
-        age: age || 32,
+        page: page,
+        gender: gender || 'all',
+        age: age || 25,
       },
     );
 
     const { total_results: totalResults, status } = response.data;
 
     const results = JSON.parse(response.data.results);
-
-    const studies = results.map(study => format(study));
+    console.log(results)
+    const studies = results.length ? results.map(study => format(study)) : [];
 
     const finalResponse = { studies, totalResults, status };
 
-    localStorage.setItem("studies", JSON.stringify(finalResponse));
-
+    //localStorage.setItem("studies", JSON.stringify(finalResponse));
+    console.log(finalResponse)
     return finalResponse;
   } catch (err) {
+    console.log(err)
     return { ...err.response };
   }
 };

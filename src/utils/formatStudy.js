@@ -38,10 +38,10 @@ const format = object => {
     ...study,
     eligibility,
     gov_id: govId,
-    intervention: study.intervention.split("\n").filter(Boolean),
-    lead_sponsor: study.lead_sponsor.split("\n").filter(Boolean),
-    location: study.location.split("\n").filter(Boolean),
-    sponsors: study.sponsors.split("\n").filter(Boolean),
+    intervention: !study.intervention ? null : study.intervention.split("\n").filter(Boolean),
+    lead_sponsor: !study.lead_sponsor ? null : study.lead_sponsor.split("\n").filter(Boolean),
+    location: !study.location ? null : study.location.split("\n").filter(Boolean),
+    sponsors: !study.sponsors ? null : study.sponsors.split("\n").filter(Boolean),
   };
 };
 
