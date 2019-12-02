@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -8,7 +8,9 @@ import { fetchData } from "../../../utils";
 import ListingTable from "./ListingTable";
 import PageSelection from "./PageSelection";
 
-const Listings = ({ page, navigate }) => {
+const Listings = ({ navigate, location }) => {
+  const [page, setPage] = useState(1);
+
   const { state, dispatch } = useContext(Context);
   const {
     postalCode,
@@ -19,42 +21,52 @@ const Listings = ({ page, navigate }) => {
     totalResults: results,
     data,
   } = state;
+  
   useEffect(() => {
-    const fetch = async () => {
-      dispatch({ type: "DATA_FETCH_START" });
-      const { status, studies, totalResults } = await fetchData(
-        condition,
-        postalCode,
-        country,
-        Number(page),
-        gender,
-        age,
-      );
-      if (status === 200) {
-        dispatch({
-          type: "DATA_FETCH_SUCCESS",
-          payload: { studies, totalResults },
-        });
-      } else {
-        dispatch({
-          type: "DATA_FETCH_FAILURE",
-          payload: { studies, totalResults },
-        });
-      }
-    };
-    fetch();
-  }, [dispatch, page, condition, country, postalCode, age, gender]);
+    fetch(Number(location.pathname.slice(9)));
+    setPage(Number(location.pathname.slice(9)))
+  }, [location.pathname]);
+  
+  const fetch = async (pageNum) => {
+    dispatch({ type: "DATA_FETCH_START" });
+    const { status, studies, totalResults } = await fetchData(
+      condition,
+      postalCode,
+      country,
+      Number(pageNum),
+      gender,
+      age,
+    );
+    if (status === 200) {
+      dispatch({
+        type: "DATA_FETCH_SUCCESS",
+        payload: { studies, totalResults },
+      });
+    } else {
+      dispatch({
+        type: "DATA_FETCH_FAILURE",
+        payload: { studies, totalResults },
+      });
+    }
+  };
+
+  const pageChange = (pageNum) => {
+    navigate(`../${pageNum}`);
+    fetch(pageNum);
+    setPage(pageNum);
+  }
+
   return (
     <ListingsView>
       <h2>
-        1 -&nbsp;
-        {data.length}
+        {(page - 1) * 12 + 1} -&nbsp;
+        {page * 12 > results ? results : page * 12}
         &nbsp;of&nbsp;
         {results}
         &nbsp;Results
       </h2>
       <ListingTable navigate={navigate} page={page} />
-      <PageSelection page={page} />
+      <PageSelection page={page} pageChange={pageChange}/>
     </ListingsView>
   );
 };
