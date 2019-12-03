@@ -35,6 +35,7 @@ const fetchData = async (condition, postalCode, country, page, gender, age) => {
     const finalResponse = { studies, totalResults, status };
 
     //localStorage.setItem("studies", JSON.stringify(finalResponse));
+    console.log(finalResponse);
     return finalResponse;
   } catch (err) {
     return { ...err.response };

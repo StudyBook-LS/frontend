@@ -8,7 +8,7 @@ import { Context } from "../../../context";
 import Status from "./Status";
 import Requirements from "./Requirements";
 
-const Study = ({ id }) => {
+const Study = ({ id, navigate, location }) => {
   const { state } = useContext(Context);
   const { data } = state;
   const [study, setStudy] = useState({});
@@ -17,6 +17,10 @@ const Study = ({ id }) => {
     const thisStudy = data.find(stud => stud.gov_id === id);
     setStudy(() => thisStudy);
   }, [id, data]);
+
+  useEffect(() => {
+    console.log(location);
+  }, [])
 
   return (
     <StudyPage>
@@ -34,6 +38,9 @@ const Study = ({ id }) => {
           <h2>Study Purpose</h2>
           <p>{study.brief_summary}</p>
           <Requirements eligibility={study.eligibility} />
+          <button>
+            Back to listings
+          </button>
         </>
       )}
     </StudyPage>

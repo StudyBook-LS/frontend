@@ -85,9 +85,9 @@ const TentativeResults = ({ step, navigate }) => {
         />
       ) : null}
       {step === "4" && condition && postalCode && country && gender && age && (
-        <button type="button" onClick={() => navigate("../results/1")}>
+        <StyledButton type="button" onClick={() => navigate("../results/1")}>
           See Results
-        </button>
+        </StyledButton>
       )}
     </Right>
   );
@@ -125,6 +125,30 @@ const NavArrow = styled(FaAngleRight)`
     color: #1ad9c4;
   }
 `;
+
+const StyledButton = styled.button`
+  width: 18%;
+  min-width: 120px;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  background: #223547;
+  padding: 10px;
+  color: #fff;
+  transition: all 300ms ease;
+  margin-top: 2rem;
+
+  @media (max-width: 800px) {
+    position: static;
+    width: 100%;
+  }
+
+  @media (max-width: 400px) {
+  }
+
+  &:hover {
+    background: #1ad9c4;
+  }
+`
 
 TentativeResults.propTypes = {
   step: PropTypes.string.isRequired,

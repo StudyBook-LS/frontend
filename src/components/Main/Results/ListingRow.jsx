@@ -22,7 +22,7 @@ const ListingRow = ({ listing, navigate, page }) => {
       <td>{condition}</td>
       <td>{briefTitle}</td>
       <td>
-        {state === "Missing"
+        {state === null
           ? `${city}, ${country}`
           : `${city}, ${state}, ${country}`}
       </td>
