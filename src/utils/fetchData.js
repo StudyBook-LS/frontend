@@ -24,6 +24,7 @@ const fetchData = async (condition, postalCode, country, page, gender, age) => {
         page: page,
         gender: gender || 'all',
         age: age || 25,
+        country: country || 'All'
       },
     );
 
