@@ -16,6 +16,7 @@ const PageSelection = ({ page, pageChange }) => {
   return (
     <Pagination 
       current={page}
+      style={{display: 'flex', justifyContent: 'center'}}
       defaultPageSize={12}
       total={totalResults}
       onChange={handleChange}
