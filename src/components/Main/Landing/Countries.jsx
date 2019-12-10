@@ -11,6 +11,7 @@ const Countries = ({ handleChange, fromSearchPage }) => {
         Country
       </span>
       <select name="country" id="country" onChange={e => handleChange(e)}>
+        <option value='All' key='All'>All countries</option>
         {countryList.map(({ name, code }) => (
           <option value={code} key={code}>
             {name}
@@ -33,7 +34,7 @@ Countries.propTypes = {
 };
 
 const Select = styled.label`
-  width: ${({ fromSearchPage }) => (fromSearchPage ? "100%" : "25%")};
+  width: ${({ fromSearchPage }) => (fromSearchPage ? "100%" : "30%")};
 
   select {
     border: 1px solid #969797;
