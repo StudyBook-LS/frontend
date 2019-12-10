@@ -48,7 +48,7 @@ const AgeStyle = styled.label`
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 70px;
+      right: 20px;
       font-size: 1.3rem;
       color: #b2b2b2;
     }
@@ -59,6 +59,7 @@ const AgeStyle = styled.label`
     border: 1px solid #969797;
     border-radius: 20px;
     padding: 10px 0 10px 15px;
+    width: 100%;
 
     &[type="number"]::-webkit-inner-spin-button,
     &[type="number"]::-webkit-outer-spin-button {

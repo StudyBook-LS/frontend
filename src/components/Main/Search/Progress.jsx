@@ -11,7 +11,7 @@ const Progress = ({ step, navigate }) => {
   };
 
   useEffect(() => {
-    const progress = ((Number(step) - 1) / 3) * 100;
+    const progress = (Number(step) / 4) * 100;
     const circle = progressCircle.current;
     const radius = circle.r.baseVal.value;
     const circumference = radius * 2 * Math.PI;
@@ -46,6 +46,7 @@ const Progress = ({ step, navigate }) => {
           ref={progressCircle}
         />
       </ProgressCircle>
+      <p className='progress'>{(Number(step) / 4) * 100}%</p>
       {step !== "1" ? (
         <NavArrow
           onClick={() => handleClick()}
@@ -65,6 +66,13 @@ const Left = styled.section`
   align-items: center;
   position: relative;
   min-height: 30vh;
+
+  .progress {
+    position: absolute;
+    top: 50px;
+    font-size: 19px;
+    color: #969797;
+  }
 `;
 
 const ProgressCircle = styled.svg`

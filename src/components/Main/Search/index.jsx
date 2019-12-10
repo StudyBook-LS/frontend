@@ -9,6 +9,7 @@ import TentativeResults from "./TentativeResults";
 import Condition from "./Condition";
 import Gender from "./Gender";
 import Age from "./Age";
+import RightSection from './RightSection';
 
 const Search = ({ "*": step, navigate }) => {
   return (
@@ -18,8 +19,9 @@ const Search = ({ "*": step, navigate }) => {
         <Condition path="1" />
         <Gender path="2" />
         <Age path="3" />
+        <TentativeResults path='4' navigate={navigate}/>
       </Router>
-      <TentativeResults step={step} navigate={navigate} />
+      <RightSection step={step} navigate={navigate} /> 
     </SearchStyle>
   );
 };
