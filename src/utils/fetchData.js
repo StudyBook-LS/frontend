@@ -24,7 +24,11 @@ const fetchData = async (condition, postalCode, country, page, gender, age) => {
         page: page,
         gender: gender || 'all',
         age: age || 25,
+<<<<<<< HEAD
         country: countrySearch || 'All'
+=======
+        country: country || 'All'
+>>>>>>> 39c91f3b4aca1e8c2f4554910500fdcbb467e24b
       },
     );
 
