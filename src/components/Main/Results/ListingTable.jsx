@@ -51,6 +51,8 @@ ListingTable.propTypes = {
 
 const Table = styled.table`
   height: auto;
+  width: 100%;
+
   th {
     text-align: left;
     padding: 20px 0 10px;
@@ -69,18 +71,24 @@ const Table = styled.table`
     height: 75px;
 
     &:first-of-type {
-      font-size: 1rem;
+      font-size: 1.2rem;
       max-width: 120px;
     }
 
     &:nth-of-type(2) {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
-      max-width: 400px;
+      max-width: 350px;
+    }
+
+    &:nth-of-type(3) {
+      font-size: 1.2rem;
+      max-width: 120px;
     }
 
     &:nth-of-type(4) {
-      max-width: 100px;
+      font-size: 1.2rem;
+      max-width: 120px;
     }
   }
 

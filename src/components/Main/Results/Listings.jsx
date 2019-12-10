@@ -97,5 +97,6 @@ const ListingsView = styled.section`
   .pagination {
     display: flex;
     justify-content: center;
+    padding: 15px
   }
 `;
