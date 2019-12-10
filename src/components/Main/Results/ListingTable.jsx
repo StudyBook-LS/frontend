@@ -28,7 +28,7 @@ const ListingTable = ({ navigate, page }) => {
                 key={govId}
                 listing={listing}
                 navigate={navigate}
-                page={page}
+                page={page.toString()}
               />
             );
           })}
