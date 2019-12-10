@@ -41,7 +41,7 @@ export default ListingTable;
 
 ListingTable.defaultProps = {
   navigate: null,
-  page: "1",
+  page: '1',
 };
 
 ListingTable.propTypes = {
@@ -70,7 +70,7 @@ const Table = styled.table`
 
     &:first-of-type {
       font-size: 1rem;
-      max-width: 100px;
+      max-width: 120px;
     }
 
     &:nth-of-type(2) {
@@ -80,7 +80,7 @@ const Table = styled.table`
     }
 
     &:nth-of-type(4) {
-      max-width: 75px;
+      max-width: 100px;
     }
   }
 

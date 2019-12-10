@@ -65,8 +65,8 @@ const Listings = ({ navigate, location }) => {
         {results}
         &nbsp;Results
       </h2>
-      <ListingTable navigate={navigate} page={page} />
-      <PageSelection page={page} pageChange={pageChange}/>
+      <ListingTable navigate={navigate} page={page.toString()} />
+      <PageSelection page={page.toString()} pageChange={pageChange}/>
     </ListingsView>
   );
 };
@@ -92,5 +92,10 @@ const ListingsView = styled.section`
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 10px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
   }
 `;

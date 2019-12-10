@@ -45,24 +45,30 @@ const TentativeResults = ({ step, navigate }) => {
 
   const handleClick = () => {
     const nextPage = Number(step) + 1;
-    //navigate(`${nextPage}`);
-    fetch(nextPage);
+    navigate(`${nextPage}`);
   };
 
   const handleKey = e => {
     if (e.key === "Enter") {
       const nextPage = Number(step) + 1;
-      fetch(nextPage);
-      //navigate(`${nextPage}`);
+      navigate(`${nextPage}`);
     } 
   };
 
+  const handleLastKey = e => {
+    if (e.key === "Enter") {
+      const nextPage = Number(step) + 1;
+      fetch(nextPage);
+    } 
+  }
+
+  const handleLastClick = () => {
+    const nextPage = Number(step) + 1;
+    fetch(nextPage);
+  }
+
   return (
     <Right>
-      <ResultsHeader>
-        {totalResults}
-        &nbsp;trials found
-      </ResultsHeader>
       {step === "1" && condition && postalCode && country ? (
         <NavArrow
           onClick={() => handleClick()}
@@ -79,15 +85,21 @@ const TentativeResults = ({ step, navigate }) => {
       ) : null}
       {step === "3" && gender ? (
         <NavArrow
-          onClick={() => handleClick()}
-          onKeyPress={e => handleKey(e)}
+          onClick={() => handleLastClick()}
+          onKeyPress={e => handleLastKey(e)}
           tabIndex="0"
         />
       ) : null}
       {step === "4" && condition && postalCode && country && gender && age && (
-        <StyledButton type="button" onClick={() => navigate("../results/1")}>
-          See Results
-        </StyledButton>
+        <>
+          <ResultsHeader>
+            {totalResults}
+            &nbsp;trials found
+          </ResultsHeader>
+          <StyledButton type="button" onClick={() => navigate("../results/1")}>
+            See Results
+          </StyledButton>
+        </>
       )}
     </Right>
   );
