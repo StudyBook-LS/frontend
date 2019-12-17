@@ -6,6 +6,7 @@ import Landing from "./Landing";
 import Search from "./Search";
 import Results from "./Results";
 import Study from "./Study";
+import About from './About';
 
 const Main = () => {
   return (
@@ -15,6 +16,7 @@ const Main = () => {
         <Search path="search/*" />
         <Results path="results/*" />
         <Study path="study/:id" />
+        <About path='about/' />
       </Router>
     </MainStyle>
   );

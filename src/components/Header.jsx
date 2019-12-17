@@ -11,8 +11,7 @@ const Header = () => {
         <img src={logo} alt="Studybrook logo" />
       </a>
       <nav>
-        <a href="#find">Find a Trial</a>
-        <a href="#about">About</a>
+        <a href="about">About</a>
         <a href="#help">Help</a>
       </nav>
     </HeaderStyle>
@@ -33,13 +32,14 @@ const HeaderStyle = styled.header`
 	nav {
 		width: 25%;
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 
 		a {
 			text-decoration: none;
 			font-size: 1.8rem;
 			color: #3f3f3f;
 			transition: all 300ms ease;
+			margin-left: 80px;
 
 			&:hover {
 				color: #1ad9c4;
