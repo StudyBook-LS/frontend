@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-
+import Loader from 'react-loader-spinner';
 import { Context } from "../../../context";
 
 import fetchData from "../../../utils/fetchData";
@@ -77,8 +77,17 @@ const Form = ({ navigate }) => {
       </label>
       <Countries handleChange={handleChange} />
       {error && <div>{error}</div>}
-      {isFetchingData && <div>{isFetchingData}</div>}
-      <button type="submit">Find a Trial</button>
+
+      <button type="submit">
+        {isFetchingData &&
+        <Loader
+          type='TailSpin'
+          color='white'
+          height={12}
+          width={12}
+        />}
+        Find a Trial
+      </button>
     </FormStyle>
   );
 };
@@ -146,8 +155,10 @@ const FormStyle = styled.form`
   }
 
   button {
+    display:flex
+    justify-content: center;
     width: 18%;
-    min-width: 120px;
+    min-width: 160px;
     font-size: 1.5rem;
     text-transform: uppercase;
     border-radius: 20px;
@@ -158,6 +169,10 @@ const FormStyle = styled.form`
     position: absolute;
     bottom: 0;
     right: 0;
+
+    > div {
+      margin: 0 10px 0 0;
+    }
 
     @media (max-width: 800px) {
       position: static;

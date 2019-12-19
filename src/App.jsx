@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 
 import Global from "./styles/Global";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import { Context } from "./context";
 
