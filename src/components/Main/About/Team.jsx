@@ -11,10 +11,11 @@ const Team = () => {
 
   const data = [
     {
-      name: 'Connor Hearty',
+      name: 'Connor Heraty',
       github: 'https://github.com/connorpheraty',
       portfolio: 'http://connorheraty.com/',
-      role: 'Data Scientist',
+      linkedIn: 'https://www.linkedin.com/in/connor-heraty-ab6618162',
+      role: 'Data Engineer',
       description: '',
       image: connor
     },
@@ -30,7 +31,7 @@ const Team = () => {
       portfolio: 'https://www.iridigital.com/',
       github: 'https://github.com/keveightysev',
       linkedIn: 'https://www.linkedin.com/in/keveightysev',
-      role: 'Front-end architect',
+      role: 'Front-end Architect',
       description: '',
       image: kevin
     },
@@ -38,7 +39,7 @@ const Team = () => {
       name: 'Penny Lee',
       portfolio: 'https://mochibot.netlify.com/',
       github: 'https://github.com/mochibot',
-      role: 'Front-end architect',
+      role: 'Front-end Architect',
       description: '',
       image: penny
     }

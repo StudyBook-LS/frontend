@@ -8,19 +8,19 @@ const Detail = ({ person }) => {
       <img src={person.image} alt={person.name}/>
       <div className='icons'>
         {person.portfolio && (
-          <a href={person.portfolio} target='_blank' rel='noopener noreferrer'>
+          <a href={person.portfolio} target='_blank' rel='noopener noreferrer' title='Portfolio'>
             <span className="hidden">Portfolio</span>
             <FaFolder />
           </a>
         )}
         {person.github && (
-          <a href={person.github} target='_blank' rel='noopener noreferrer'>
+          <a href={person.github} target='_blank' rel='noopener noreferrer' title='Github'>
             <span className="hidden">Github</span>
             <FaGithub />
           </a>
         )}
         {person.linkedIn && (
-          <a href={person.linkedIn} target='_blank' rel='noopener noreferrer'>
+          <a href={person.linkedIn} target='_blank' rel='noopener noreferrer' title='LinkedIn'>
             <span className="hidden">Github</span>
             <FaLinkedin />
           </a>
